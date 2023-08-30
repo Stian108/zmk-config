@@ -11,12 +11,10 @@
 
 &left_encoder {
     steps = <80>;
-    triggers-per-rotation = <20>;
 };
 
 &right_encoder {
     steps = <80>;
-    triggers-per-rotation = <20>;
 };
 
 / {
@@ -29,6 +27,12 @@
             tap-ms = <40>;
             bindings =  <&macro_param_1to1>, <&macro_tap &kp MACRO_PLACEHOLDER &kp SPACE>;
         };
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder &right_encoder>;
+        triggers-per-rotation = <20>;
     };
 
     conditional_layers {
