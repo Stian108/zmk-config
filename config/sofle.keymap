@@ -9,6 +9,14 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+&left_encoder {
+    steps = <20>;
+};
+
+&right_encoder {
+    steps = <20>;
+};
+
 / {
     macros {
         ud: ud {
