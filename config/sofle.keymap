@@ -11,10 +11,12 @@
 
 &left_encoder {
     steps = <80>;
+    triggers-per-rotation = <20>;
 };
 
 &right_encoder {
     steps = <80>;
+    triggers-per-rotation = <20>;
 };
 
 / {
