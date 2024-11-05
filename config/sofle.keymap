@@ -37,9 +37,13 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        tri_layer {
+        mac_enabled {
             if-layers = <1 2>;
             then-layer = <3>;
+        };
+        tri_layer {
+            if-layers = <2 4>;
+            then-layer = <5>;
         };
     };
 
@@ -50,9 +54,21 @@
             bindings = <
 &kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp BSPC
 &kp TAB   &kp Q  &kp W    &kp F    &kp P     &kp B                       &kp J  &kp L     &kp U     &kp Y    &kp SEMI &kp LBKT
-&kp BSPC  &kp A  &kp R    &kp S    &kp T     &kp G                       &kp M  &kp N     &kp E     &kp I    &kp O    &kp SQT
+&kp CAPS  &kp A  &kp R    &kp S    &kp T     &kp G                       &kp M  &kp N     &kp E     &kp I    &kp O    &kp SQT
 &kp LSHFT &kp Z  &kp X    &kp C    &kp D     &kp V  &kp C_MUTE &kp C_PP  &kp K  &kp H     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &kp LGUI &kp LALT &kp LCTRL &mo 1  &kp SPACE    &kp RET &mo 2  &kp RCTRL &kp RALT  &kp RGUI
+                 &kp LGUI &kp LALT &kp LCTRL &mo 1  &kp SPACE    &kp RET &mo 3  &kp RCTRL &kp RALT  &kp RGUI
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
+        };
+
+        mac_enabled {
+            bindings = <
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans   &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans    &trans  &trans
+                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
@@ -65,6 +81,18 @@
 &trans    &kp LS(N1)   &kp RA(N2) &kp LS(N3)   &kp RA(N4)  &kp LS(N5)                &ud LS(RBKT) &kp LS(N6) &kp LS(NON_US_HASH) &kp LS(N8)          &kp LS(N9)    &kp NON_US_HASH
 &trans    &ud RA(RBKT) &kp LS(N2) &kp MINUS    &kp RA(N7)  &kp RA(N0)  &trans &trans &kp RA(N8)   &kp RA(N9) &kp NON_US_BSLH     &kp LS(NON_US_BSLH) &kp LS(MINUS) &trans
                        &trans     &trans       &trans      &trans      &trans &trans &trans       &trans     &trans              &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
+        };
+
+        lower_layer_mac {
+            bindings = <
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans   &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &trans       &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans    &trans  &trans
+                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
@@ -85,7 +113,7 @@
         adjust_layer {
             bindings = <
 &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &kp F16   &kp F17   &kp F18  &kp F19   &kp F20 &trans
-&trans     &out OUT_USB &out OUT_BLE &trans       &trans       &trans                   &kp F21   &kp 22    &kp F23  &kp F24   &trans  &trans
+&tog 1     &out OUT_USB &out OUT_BLE &trans       &trans       &trans                   &kp F21   &kp F22   &kp F23  &kp F24   &trans  &trans
 &trans     &trans       &trans       &trans       &trans       &trans                   &trans    &trans    &trans   &trans    &trans  &trans
 &trans     &trans       &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans    &trans  &trans
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
